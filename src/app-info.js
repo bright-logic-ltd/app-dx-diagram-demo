@@ -1,3 +1,3 @@
 export default {
-  title: "App Dx Grid Demo"
+  title: 'App Dx Grid Demo',
 };

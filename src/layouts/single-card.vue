@@ -41,7 +41,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../themes/generated/variables.base.scss";
+@use 'sass:color';
+@use  "../themes/generated/variables.base.scss";
 
 .single-card {
   width: 100%;

@@ -9,11 +9,12 @@
 </template>
 
 <style lang="scss">
-@import "../themes/generated/variables.base.scss";
+@use 'sass:color';
+@use "../themes/generated/variables.base.scss" as base;
 
 .footer {
   display: block;
-  color: rgba($base-text-color, alpha($base-text-color) * 0.7);
+  color: rgba(base.$base-text-color, alpha(base.$base-text-color) * 0.7);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 20px;
   padding-bottom: 24px;

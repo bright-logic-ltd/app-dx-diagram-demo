@@ -117,8 +117,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../themes/generated/variables.base.scss";
-@import "../dx-styles.scss";
+@use 'sass:color';
+@use  "../themes/generated/variables.base.scss" as base;
+@use  "../dx-styles.scss";
 
 .header-component {
   flex: 0 0 auto;
@@ -126,7 +127,7 @@ export default {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   .dx-toolbar .dx-toolbar-item.menu-button > .dx-toolbar-item-content .dx-icon {
-    color: $base-accent;
+    color: base.$base-accent;
   }
 }
 
@@ -139,7 +140,7 @@ export default {
 }
 
 .dx-toolbar .dx-toolbar-item.dx-toolbar-button.menu-button {
-  width: $side-panel-min-width;
+  width: 60px;
   text-align: center;
   padding: 0;
 }

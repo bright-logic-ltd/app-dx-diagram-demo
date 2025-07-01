@@ -1,4 +1,4 @@
-# app-dx-grid-demo
+# app-dx-diagram-demo
 
 ## Project setup
 ```

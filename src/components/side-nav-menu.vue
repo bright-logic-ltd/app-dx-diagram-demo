@@ -108,8 +108,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../dx-styles.scss";
-@import "../themes/generated/variables.additional.scss";
+@use 'sass:color';
+@use "../dx-styles.scss" as base;
+@use "../themes/generated/variables.additional.scss" as additional;
 
 .side-navigation-menu {
   display: flex;
@@ -134,7 +135,7 @@ export default {
         flex-direction: row-reverse;
 
         .dx-icon {
-          width: $side-panel-min-width !important;
+          width: base.$side-panel-min-width !important;
           margin: 0 !important;
         }
       }
@@ -160,12 +161,12 @@ export default {
       .dx-treeview-node {
         &[aria-level="1"] {
           font-weight: bold;
-          border-bottom: 1px solid $base-border-color;
+          border-bottom: 1px solid additional.$base-border-color;
         }
 
         &[aria-level="2"] .dx-treeview-item-content {
           font-weight: normal;
-          padding: 0 $side-panel-min-width;
+          padding: 0 base.$side-panel-min-width;
         }
       }
       // ##
@@ -180,11 +181,11 @@ export default {
           }
 
           &.dx-state-selected > .dx-treeview-item * {
-            color: $base-accent;
+            color: additional.$base-accent;
           }
 
           &:not(.dx-state-focused) > .dx-treeview-item.dx-state-hover {
-            background-color: lighten($base-bg, 4);
+            background-color: color.adjust(#363640, $lightness: 4)
           }
         }
       }

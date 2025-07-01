@@ -1,79 +1,131 @@
 <script>
-import "devextreme/data/odata/store";
-import { computed } from "vue";
+import 'devextreme/data/odata/store';
+import { computed } from 'vue';
 import DxDataGrid, {
   DxColumn,
   DxFilterRow,
   DxScrolling,
   DxSearchPanel,
-} from "devextreme-vue/data-grid";
+} from 'devextreme-vue/data-grid';
 
 const priorities = [
-  { name: "High", value: 4 },
-  { name: "Urgent", value: 3 },
-  { name: "Normal", value: 2 },
-  { name: "Low", value: 1 }
+  { name: 'High', value: 4 },
+  { name: 'Urgent', value: 3 },
+  { name: 'Normal', value: 2 },
+  { name: 'Low', value: 1 },
 ];
 
 export default {
-  setup() {
-    const includeWidth = computed(() => { return window.innerWidth < 768 ? '60px' : '600px' });
-    const dataSourceConfig = {
-      store: {
-        version: 2,
-        type: "odata",
-        key: "Task_ID",
-        url: "https://js.devexpress.com/Demos/DevAV/odata/Tasks"
-      },
-      expand: "ResponsibleEmployee",
-      select: [
-        "Task_ID",
-        "Task_Subject",
-        "Task_Start_Date",
-        "Task_Due_Date",
-        "Task_Status",
-        "Task_Priority",
-        "Task_Completion",
-        "ResponsibleEmployee/Employee_Full_Name"
-      ]
-    };
-    return {
-      includeWidth,
-      dataSourceConfig,
-      priorities
-    };
-  },
   components: {
     DxDataGrid,
     DxColumn,
     DxFilterRow,
     DxScrolling,
     DxSearchPanel,
-  }
+  },
+  setup() {
+    const includeWidth = computed(() => {
+      return window.innerWidth < 768 ? '60px' : '600px';
+    });
+    const dataSourceConfig = {
+      store: {
+        version: 2,
+        type: 'odata',
+        key: 'Task_ID',
+        url: 'https://js.devexpress.com/Demos/DevAV/odata/Tasks',
+      },
+      expand: 'ResponsibleEmployee',
+      select: [
+        'Task_ID',
+        'Task_Subject',
+        'Task_Start_Date',
+        'Task_Due_Date',
+        'Task_Status',
+        'Task_Priority',
+        'Task_Completion',
+        'ResponsibleEmployee/Employee_Full_Name',
+      ],
+    };
+    return {
+      includeWidth,
+      dataSourceConfig,
+      priorities,
+    };
+  },
 };
 </script>
 <template>
   <div class="grid-container">
     <h2 class="content-block">Tasks</h2>
     <div class="grid-wrapper">
-      <dx-data-grid class="dx-card wide-card" :data-source="dataSourceConfig" :key-expr="'Task_ID'"
-        :show-borders="false" :focused-row-enabled="true" :column-auto-width="false" :column-hiding-enabled="true"
-        :selection="{ mode: 'single' }" :hover-state-enabled="true">
+      <dx-data-grid
+        class="dx-card wide-card"
+        :data-source="dataSourceConfig"
+        :key-expr="'Task_ID'"
+        :show-borders="false"
+        :focused-row-enabled="true"
+        :column-auto-width="false"
+        :column-hiding-enabled="true"
+        :selection="{ mode: 'single' }"
+        :hover-state-enabled="true"
+      >
         <dx-filter-row :visible="false" />
         <DxScrolling mode="virtual" />
         <DxSearchPanel :visible="true" />
 
         <dx-column data-field="Task_ID" width="90px" :hiding-priority="2" />
-        <dx-column data-field="Task_Subject" caption="Subject" :width="includeWidth" :hiding-priority="8" />
-        <dx-column data-field="Task_Status" caption="Status" width="190px" :hiding-priority="6" />
-        <dx-column data-field="Task_Priority" caption="Priority" width="90px" :hiding-priority="5" />
-        <dx-column data-field="ResponsibleEmployee.Employee_Full_Name" caption="Assigned To" width="190px"
-          :allow-sorting="false" :hiding-priority="7" />
-        <dx-column data-field="Task_Start_Date" caption="Start Date" data-type="date" width="190px"
-          :hiding-priority="3" />
-        <dx-column data-field="Task_Due_Date" caption="Due Date" data-type="date" width="190px" :hiding-priority="4" />
-        <dx-column data-field="Task_Priority" caption="Priority" name="Priority" width="290px" :hiding-priority="1" />
-        <dx-column data-field="Task_Completion" caption="Completion" width="290px" :hiding-priority="0" />
+        <dx-column
+          data-field="Task_Subject"
+          caption="Subject"
+          :width="includeWidth"
+          :hiding-priority="8"
+        />
+        <dx-column
+          data-field="Task_Status"
+          caption="Status"
+          width="190px"
+          :hiding-priority="6"
+        />
+        <dx-column
+          data-field="Task_Priority"
+          caption="Priority"
+          width="90px"
+          :hiding-priority="5"
+        />
+        <dx-column
+          data-field="ResponsibleEmployee.Employee_Full_Name"
+          caption="Assigned To"
+          width="190px"
+          :allow-sorting="false"
+          :hiding-priority="7"
+        />
+        <dx-column
+          data-field="Task_Start_Date"
+          caption="Start Date"
+          data-type="date"
+          width="190px"
+          :hiding-priority="3"
+        />
+        <dx-column
+          data-field="Task_Due_Date"
+          caption="Due Date"
+          data-type="date"
+          width="190px"
+          :hiding-priority="4"
+        />
+        <dx-column
+          data-field="Task_Priority"
+          caption="Priority"
+          name="Priority"
+          width="290px"
+          :hiding-priority="1"
+        />
+        <dx-column
+          data-field="Task_Completion"
+          caption="Completion"
+          width="290px"
+          :hiding-priority="0"
+        />
       </dx-data-grid>
     </div>
   </div>

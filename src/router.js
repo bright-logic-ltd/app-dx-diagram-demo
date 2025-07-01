@@ -1,12 +1,13 @@
-import auth from "./auth";
-import { createRouter, createWebHashHistory } from "vue-router";
+import auth from './auth';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
-import Home from "./views/home-page";
+import Home from './views/home-page';
 // import Profile from "./views/profile-page";
-import Tasks from "./views/tasks-page";
-import defaultLayout from "./layouts/side-nav-outer-toolbar";
+import Tasks from './views/tasks-page';
+import defaultLayout from './layouts/side-nav-outer-toolbar';
 // import simpleLayout from "./layouts/single-card";
-import DataGrid from "./views/data-grid2.vue";
+import DataGrid from './views/data-grid2.vue';
+import ProgressionDiagram from './views/progression-diagram.vue';
 
 // function loadView(view) {
 //   return () => import(/* webpackChunkName: "login" */ `./views/${view}.vue`)
@@ -15,31 +16,40 @@ import DataGrid from "./views/data-grid2.vue";
 const router = new createRouter({
   routes: [
     {
-      path: "/home",
-      name: "home",
+      path: '/home',
+      name: 'home',
       meta: {
         requiresAuth: true,
-        layout: defaultLayout
+        layout: defaultLayout,
       },
-      component: Home
+      component: Home,
     },
     {
-      path: "/grid",
-      name: "grid",
+      path: '/grid',
+      name: 'grid',
       meta: {
         requiresAuth: false,
-        layout: defaultLayout
+        layout: defaultLayout,
       },
-      component: DataGrid
+      component: DataGrid,
     },
     {
-      path: "/tasks",
-      name: "tasks",
+      path: '/tasks',
+      name: 'tasks',
       meta: {
         requiresAuth: true,
-        layout: defaultLayout
+        layout: defaultLayout,
       },
-      component: Tasks
+      component: Tasks,
+    },
+    {
+      path: '/diagram',
+      name: 'diagram',
+      meta: {
+        requiresAuth: true,
+        layout: defaultLayout,
+      },
+      component: ProgressionDiagram,
     },
     // {
     //   path: "/grid",
@@ -92,8 +102,8 @@ const router = new createRouter({
     //   component: loadView("change-password-form")
     // },
     {
-      path: "/",
-      redirect: "/home"
+      path: '/',
+      redirect: '/home',
     },
     // {
     //   path: "/recovery",
@@ -104,20 +114,19 @@ const router = new createRouter({
     //   redirect: "/home"
     // }
   ],
-  history: createWebHashHistory()
+  history: createWebHashHistory(),
 });
 
 router.beforeEach((to, from, next) => {
-
-  if (to.name === "login-form" && auth.loggedIn()) {
-    next({ name: "home" });
+  if (to.name === 'login-form' && auth.loggedIn()) {
+    next({ name: 'home' });
   }
 
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!auth.loggedIn()) {
       next({
-        name: "login-form",
-        query: { redirect: to.fullPath }
+        name: 'login-form',
+        query: { redirect: to.fullPath },
       });
     } else {
       next();
