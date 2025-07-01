@@ -20,7 +20,7 @@ const router = new createRouter({
       path: '/default-diagram',
       name: 'default diagram',
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
         layout: defaultLayout,
       },
       component: DefaultProgressionDiagram,
@@ -29,7 +29,7 @@ const router = new createRouter({
       path: '/diagram',
       name: 'diagram',
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
         layout: defaultLayout,
       },
       component: ProgressionDiagram,
