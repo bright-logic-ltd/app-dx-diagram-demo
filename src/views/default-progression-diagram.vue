@@ -76,17 +76,7 @@ const updateDiagramLayout = () => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const onInitialized = (e: any) => {
-  const diagram = e.component._diagramInstance;
 
-  diagramRef.value = diagram;
-  // Apply bottom-to-top layout after initialization
-  setTimeout(() => {
-    diagram.commandManager
-      .getCommand(DiagramCommand.AutoLayoutTreeVerticalBottomToTop)
-      .execute();
-  }, 100);
-};
 const inactiveToggleValueChange = async () => {
   if (!dxSwitchValue.value) {
     propertyChainItems.value = originalPropertyChainItems.value
@@ -103,18 +93,21 @@ const inactiveToggleValueChange = async () => {
 
 <template>
   <div class="switch-container">
-     Include Inactive Items
+    Include Inactive Items 
     <DxSwitch
       v-model:value="dxSwitchValue"
       @valueChanged="inactiveToggleValueChange"
     />
   </div>
+  <div  class="diagram">
   <DxDiagram
     id="diagram"
-    @initialized="onInitialized"
     units="in"
     :simple-view="true"
-    :readOnly="false"
+    :readOnly="false"  
+    :show-grid="false" 
+   :toolbox="{ groups: ['general'] }"
+                        :custom-shapes="[]"
   >
     <DxNodes
       :data-source="diagramNodeDataSource"
@@ -137,6 +130,7 @@ const inactiveToggleValueChange = async () => {
     <DxToolbox :visibility="'hidden'" />
     <DxContextMenu :enabled="false" />
   </DxDiagram>
+  </div>
 </template>
 <style scoped lang="scss">
 .switch-container {

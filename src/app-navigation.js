@@ -1,21 +1,26 @@
 export default [
+  // {
+  //   text: 'Sample One',
+  //   path: '/home',
+  //   icon: 'home',
+  // },
+  // {
+  //   text: 'Sample Two',
+  //   path: '/grid',
+  //   icon: 'folder',
+  // },
+  // {
+  //   text: 'Sample Three',
+  //   path: '/tasks',
+  //   icon: 'folder',
+  // },
   {
-    text: 'Sample One',
-    path: '/home',
-    icon: 'home',
-  },
-  {
-    text: 'Sample Two',
-    path: '/grid',
+    text: 'Default Diagram',
+    path: '/default-diagram',
     icon: 'folder',
   },
   {
-    text: 'Sample Three',
-    path: '/tasks',
-    icon: 'folder',
-  },
-  {
-    text: 'Diagram',
+    text: 'Diagram with flicker',
     path: '/diagram',
     icon: 'folder',
   },

@@ -8,6 +8,7 @@ import defaultLayout from './layouts/side-nav-outer-toolbar';
 // import simpleLayout from "./layouts/single-card";
 import DataGrid from './views/data-grid2.vue';
 import ProgressionDiagram from './views/progression-diagram.vue';
+import DefaultProgressionDiagram from './views/default-progression-diagram.vue';
 
 // function loadView(view) {
 //   return () => import(/* webpackChunkName: "login" */ `./views/${view}.vue`)
@@ -16,32 +17,14 @@ import ProgressionDiagram from './views/progression-diagram.vue';
 const router = new createRouter({
   routes: [
     {
-      path: '/home',
-      name: 'home',
+      path: '/default-diagram',
+      name: 'default diagram',
       meta: {
         requiresAuth: true,
         layout: defaultLayout,
       },
-      component: Home,
-    },
-    {
-      path: '/grid',
-      name: 'grid',
-      meta: {
-        requiresAuth: false,
-        layout: defaultLayout,
-      },
-      component: DataGrid,
-    },
-    {
-      path: '/tasks',
-      name: 'tasks',
-      meta: {
-        requiresAuth: true,
-        layout: defaultLayout,
-      },
-      component: Tasks,
-    },
+      component: DefaultProgressionDiagram,
+    },    
     {
       path: '/diagram',
       name: 'diagram',
@@ -51,6 +34,33 @@ const router = new createRouter({
       },
       component: ProgressionDiagram,
     },
+    // {
+    //   path: '/home',
+    //   name: 'home',
+    //   meta: {
+    //     requiresAuth: true,
+    //     layout: defaultLayout,
+    //   },
+    //   component: Home,
+    // },
+    // {
+    //   path: '/grid',
+    //   name: 'grid',
+    //   meta: {
+    //     requiresAuth: false,
+    //     layout: defaultLayout,
+    //   },
+    //   component: DataGrid,
+    // },
+    // {
+    //   path: '/tasks',
+    //   name: 'tasks',
+    //   meta: {
+    //     requiresAuth: true,
+    //     layout: defaultLayout,
+    //   },
+    //   component: Tasks,
+    // },
     // {
     //   path: "/grid",
     //   name: "datagrid",
@@ -103,7 +113,7 @@ const router = new createRouter({
     // },
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/diagram',
     },
     // {
     //   path: "/recovery",
